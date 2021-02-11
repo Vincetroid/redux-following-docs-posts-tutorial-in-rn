@@ -1,12 +1,34 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
+import { useDispatch } from 'react-redux'
+import { nanoid } from '@reduxjs/toolkit'
+
+import { postAdded } from './postsSlice'
 
 export const AddPostForm = () => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
 
-  const onTitleChanged = e => setTitle(e.target.value)
-  const onContentChanged = e => setContent(e.target.value)
+  const dispatch = useDispatch()
+
+  const onTitleChanged = newValue => setTitle(newValue)
+  const onContentChanged = newValue => setContent(newValue)
+
+  const onSavePostClicked = () => {
+    console.log(title, content);
+    if (title && content) {
+      dispatch(
+        postAdded({
+          id: nanoid(),
+          title,
+          content
+        })
+      )
+
+      setTitle('')
+      setContent('')
+    }
+  }
 
   return (
     <View>
@@ -14,16 +36,16 @@ export const AddPostForm = () => {
       <Text style={styles.postTitle}>Post Title</Text>
       <TextInput
         value={title}
-        onChange={onTitleChanged}
+        onChangeText={onTitleChanged}
         style={styles.textInput}
       />
       <Text style={styles.postContent}>Content</Text>
       <TextInput
         value={content}
-        onChange={onContentChanged}
+        onChangeText={onContentChanged}
         style={styles.textInput}
       />
-      <Button title="Save Post" />
+      <Button title="Save Post" onPress={onSavePostClicked} />
     </View>
   )
 }
