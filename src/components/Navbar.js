@@ -4,17 +4,20 @@ import { View, Text, StyleSheet } from 'react-native';
 const Navbar = () => {
   return (
     <View style={styles.container}>
-      <View>
-        <Text>Redux Essentials Example</Text>
-      </View>
+      <Text style={styles.title}>Redux Essentials Example</Text>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#ededed',
-    // flex: 1,
+    height: 90,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  title: {
+    fontSize: 18
   }
 });
 

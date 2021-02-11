@@ -14,16 +14,27 @@ export const PostsList = () => {
 
   return (
     <View style={styles.postsList}>
-      <Text>Posts</Text>
+      <Text style={styles.title}>Posts</Text>
       {renderedPosts}
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  postLists: {
+  title: {
+    fontSize: 17,
+    marginBottom: 15
+  },
+  postsList: {
     flex: 1,
     display: 'flex',
-    backgroundColor: 'aqua'
+    backgroundColor: '#eee',
+    marginTop: 40
+  },
+  postExcerpt: {
+    marginBottom: 5
+  },
+  postContent: {
+    marginLeft: 20
   }
 });
