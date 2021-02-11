@@ -14,7 +14,7 @@ const Navbar = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ededed',
-    flex: 1,
+    // flex: 1,
   }
 });
 
